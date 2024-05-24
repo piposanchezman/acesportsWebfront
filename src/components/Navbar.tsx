@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "../context/AppContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
@@ -14,7 +15,7 @@ import {
   DropdownContent,
   DropdownItem,
 } from "../styles/NavbarStyles";
-import LogoImg from "../assets/LogoNavbar.svg";
+import LogoImg from "../assets/images/logoNavbar.svg";
 
 interface LinkProps {
   id: number;
@@ -26,7 +27,8 @@ interface LinkElementProps {
 }
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth0();
+  const { logout } = useAuth0();
+  const { userData } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const LinkItems: LinkProps[] = [
     {
@@ -79,7 +81,7 @@ const Navbar: React.FC = () => {
             </NavbarLinkContainer>
           </CenterContainer>
           <RightContainer>
-            {user && <UserImage onClick={toggleDropdown} src={user.picture} alt="User profile" />}
+            <UserImage onClick={toggleDropdown} src={userData.picture} alt="User profile" />
           </RightContainer>
         </NavbarInnerContainer>
       </NavbarContainer>
