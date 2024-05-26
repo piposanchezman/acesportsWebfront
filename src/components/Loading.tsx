@@ -1,4 +1,4 @@
-import logoLoading from "../assets/Loading.gif";
+import logoLoading from "../assets/images/loading.gif";
 import { LogoContainer, LogoImage } from "../styles/LoadingStyles";
 
 export const LoadingAnimation = () => {
