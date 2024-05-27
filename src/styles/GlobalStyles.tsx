@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: auto;
   max-width: 1200px;
   padding: 0px 10%;

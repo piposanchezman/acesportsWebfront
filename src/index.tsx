@@ -13,7 +13,7 @@ root.render(
     authorizationParams={{
       redirect_uri: window.location.origin,
       audience: process.env.REACT_APP_AUTH0_AUDIENCE,
-      scope: "openid profile email",
+      scope: "read:current_user, update:current_user_metadata",
     }}
   >
     <React.StrictMode>

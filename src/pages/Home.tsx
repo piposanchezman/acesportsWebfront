@@ -21,6 +21,7 @@ const Home = () => {
           fontWeight: "bold",
           marginTop: "32px",
           color: "#0062FF",
+          textAlign: "center",
         }}
       >
         Acesports

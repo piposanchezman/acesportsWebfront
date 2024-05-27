@@ -26,9 +26,7 @@ import { IA } from "./pages/IA";
 import { WFFull } from "./pages/WFFull";
 
 export const App: React.FC = () => {
-  const { isAuthenticated, isLoading, user } = useAuth0();
-
-  console.log(user);
+  const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return <LoadingAnimation />;
@@ -37,48 +35,40 @@ export const App: React.FC = () => {
   return (
     <>
       <ApiContextProvider>
-        <AppContextProvider>
-          <BrowserRouter>
-            <Routes>
-              {isAuthenticated ? (
-                <>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/my-profile" element={<Profile />} />
-                  <Route path="/register-form" element={<RegisterForm />} />
-                  <Route path="/lot-menu/:id" element={<DashboardLots />} />
-                  <Route path="/add-lote" element={<AddLot />} />
-                  <Route path="/edit-lote/:id" element={<EditLot />} />
-                  <Route path="/lot-menu/new-crop/:id" element={<NewCrop />} />
-                  <Route path="/lots-manage" element={<LotsManage />} />
-                  <Route path="/config-vars" element={<VarForm />} />
-                  <Route path="/lot-menu/crops/:id" element={<LotsCrops />} />
-                  <Route path="/edit-crop/:id" element={<EditCrop />} />
-                  <Route path="/lot-menu/edit-crop/register-view/:id" element={<RegisterView />} />
-                  <Route path="/lot-menu/water-footprint/:id" element={<WFLot />} />
-                  <Route path="/lot-menu/water-footprint/crops/:id" element={<WFCrops />} />
-                  <Route
-                    path="/lot-menu/water-footprint/crops/comp/:id"
-                    element={<WFComponents />}
-                  />
-                  <Route
-                    path="/lot-menu/water-footprint/crops/comp/:id/type/:type"
-                    element={<WF />}
-                  />
-                  <Route
-                    path="/lot-menu/water-footprint/crops/comp/:id/full"
-                    element={<WFFull />}
-                  />
-                  <Route path="/lot-menu/water-footprint/crops/comp/:id/IA" element={<IA />} />
-                </>
-              ) : (
-                <>
-                  <Route path="/" element={<LoginPage />} />
-                  {/* <Route path="/Loading" element={<LoadingAnimation />} /> */}
-                </>
-              )}
-            </Routes>
-          </BrowserRouter>
-        </AppContextProvider>
+        <BrowserRouter>
+          <Routes>
+            {isAuthenticated ? (
+              <>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/my-profile" element={<Profile />} />
+                <Route path="/register-form" element={<RegisterForm />} />
+                <Route path="/lot-menu/:id" element={<DashboardLots />} />
+                <Route path="/add-lote" element={<AddLot />} />
+                <Route path="/edit-lote/:id" element={<EditLot />} />
+                <Route path="/lot-menu/new-crop/:id" element={<NewCrop />} />
+                <Route path="/lots-manage" element={<LotsManage />} />
+                <Route path="/config-vars" element={<VarForm />} />
+                <Route path="/lot-menu/crops/:id" element={<LotsCrops />} />
+                <Route path="/edit-crop/:id" element={<EditCrop />} />
+                <Route path="/lot-menu/edit-crop/register-view/:id" element={<RegisterView />} />
+                <Route path="/lot-menu/water-footprint/:id" element={<WFLot />} />
+                <Route path="/lot-menu/water-footprint/crops/:id" element={<WFCrops />} />
+                <Route path="/lot-menu/water-footprint/crops/comp/:id" element={<WFComponents />} />
+                <Route
+                  path="/lot-menu/water-footprint/crops/comp/:id/type/:type"
+                  element={<WF />}
+                />
+                <Route path="/lot-menu/water-footprint/crops/comp/:id/full" element={<WFFull />} />
+                <Route path="/lot-menu/water-footprint/crops/comp/:id/IA" element={<IA />} />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<LoginPage />} />
+                {/* <Route path="/Loading" element={<LoadingAnimation />} /> */}
+              </>
+            )}
+          </Routes>
+        </BrowserRouter>
       </ApiContextProvider>
     </>
   );

@@ -28,7 +28,7 @@ interface LinkElementProps {
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const { logout } = useAuth0();
-  const { userData } = useContext(AppContext);
+  const { user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
   const LinkItems: LinkProps[] = [
     {
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
             </NavbarLinkContainer>
           </CenterContainer>
           <RightContainer>
-            <UserImage onClick={toggleDropdown} src={userData.picture} alt="User profile" />
+            <UserImage onClick={toggleDropdown} src={user?.picture} alt="User profile" />
           </RightContainer>
         </NavbarInnerContainer>
       </NavbarContainer>
